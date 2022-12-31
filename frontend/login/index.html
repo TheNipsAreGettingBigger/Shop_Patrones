@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/src/style.css">
+  </head>
+  <body>
+    <div id="app">
+      <form class="form-login" id="form-login">
+        <div class="form-title">
+          <h2>Login del sistema</h2>
+          <div class="logo-img">
+            <img src="https://raw.githubusercontent.com/TheNipsAreGettingBigger/Images/main/vegetables.png" alt="">
+          </div>
+        </div>
+        <div class="tabs-container">
+          <ul class="tabs" id="tabs">
+            <li class="tabs__item active" id="tab-1">Estrategia #1</li>
+            <li class="tabs__item" id="tab-3">Estrategia #2</li>
+          </ul>
+          <div class="panels">
+            <div class="panels__item active" data-method="username">
+              <div class="field">
+                <label for="">Username</label>
+                <input type="text" class="txtUser" />
+              </div>
+              <div class="field">
+                <label for="">Password</label>
+                <input type="password" class="txtPassword" />
+              </div>
+            </div>
+            <div class="panels__item" data-method="email">
+              <div class="field">
+                <label for="">Email</label>
+                <input type="email" class="txtUser" />
+              </div>
+              <div class="field">
+                <label for="">Password</label>
+                <input type="password" class="txtPassword"  />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="auth-alert" class="auth-alert">
+          
+        </div>
+        <button type="submit" class="btn-login">Ingresar</button>
+      </form>
+    </div>
+    <script>
+      ((d) => {
+        let tabs = [...d.querySelectorAll(".tabs__item")];
+        let panels = [...d.querySelectorAll(".panels__item")];
+        d.getElementById("tabs").addEventListener("click", (e) => {
+          e.preventDefault();
+          if (e.target.classList.contains("tabs__item")) {
+            let position = tabs.indexOf(e.target);
+            tabs.forEach((tab) => tab.classList.remove("active"));
+            panels.forEach((panel) => panel.classList.remove("active"));
+            tabs[position].classList.add("active");
+            panels[position].classList.add("active");
+          }
+        });
+      })(document);
+
+      ((doc) => {
+        const destination = location.hash.slice(1);
+        if (!destination) return;
+        const tab = document.getElementById(destination);
+        if (!tab) return;
+        tab.click();
+      })(document);
+    </script>
+    <script type="module" src="/login/index.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="src/style.css">
+  </head>
+  <body>
+    <script>
+      if(!localStorage.getItem("x-token")){
+          window.location = "/login/"
+          throw new Error("Usuario no valido")
+      }
+  </script>
+    <div id="app">
+      <div class="logout" title="Cerrar Sesion">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout" width="48" height="48" viewBox="0 0 24 24" stroke-width="2.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+          <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
+          <path d="M7 12h14l-3 -3m0 6l3 -3" />
+        </svg>
+      </div>
+      <div class="alert" id="alert">
+        <p> <i class="fa-solid fa-check-double"></i> Add new Product !!</p>
+      </div>
+      <main class="main">
+        <div class="header">
+          <h1 class="header__title">Dummy Shop</h1>
+          <div class="box">
+            <div class="search">
+              <div class="search__input">
+                <input type="text" name="" id="input" autocomplete="off"
+                placeholder="Product"
+                >
+                <span><i class="fa-solid fa-cart-arrow-down"></i></span>
+              </div>
+              <button id="add-product">Add</button>
+            </div>
+            <select class="select" name="tipos">
+              <option value="vegetables" selected>Vegetables</option>
+              <option value="drinks">Drinks</option>
+              <option value="cereals">Cereals</option>
+            </select>
+          </div>
+        </div>
+        <div class="shopping-cart">
+          <h1>
+            <span class="icon">
+              <span class="counter" id="counter">1</span>
+              <i class="fa-solid fa-cart-shopping"></i>
+            </span> My Shopping cart</h1>
+          <table>
+            <thead>
+              <tr>
+                <th>N°</th>
+                <th>Image</th>
+                <th>Name</th>
+              </tr>
+            </thead>
+            <tbody id="content">
+              <tr>
+                <td>1</td>
+                <td><img src="https://raw.githubusercontent.com/TheNipsAreGettingBigger/Images/main/vegetables.png" alt=""></td>
+                <td>tomate</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+    
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
